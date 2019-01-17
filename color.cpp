@@ -19,6 +19,11 @@ std::istream& operator>>(std::istream& is,
   return is >> c.r >> c.g >> c.b;
 }
 
+Color getColor(const std::map<std::string, Color>& colors,
+               const std::string& color) {
+  return colors[color];
+}
+
 int main() {
   // Goal: read the database, then ask user for color names.
   // If the user enters a valid name, print the color.
@@ -40,6 +45,7 @@ int main() {
     std::cout << "Enter a color name, or type quit: ";
     std::cin >> input;
     if (input == "quit") break;
-    std::cout << colors[input] << std::endl;
+    Color color = getColor(colors, input);
+    std::cout << color << std::endl;
   }
 }
