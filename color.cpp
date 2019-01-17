@@ -67,7 +67,7 @@ int main() {
     std::string input;
     std::cout << "Enter a color name, or type quit: ";
     std::cin >> input;
-    if (input == "quit") break;
+    if (input == "quit" || std::cin.eof()) break;
     const Color *color = getColor(colors, input);
     if (color) {
       std::cout << *color << std::endl;
