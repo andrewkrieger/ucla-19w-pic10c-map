@@ -2,8 +2,8 @@
 
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <string>
-#include <vector>
 
 struct Color {
   float r, g, b;
@@ -26,14 +26,12 @@ int main() {
 
   // Read the database.
   std::ifstream f("colors.txt");
-  std::vector<std::string> names;
-  std::vector<Color> colors;
+  std::map<std::string, Color> colors;
   while (true) {
     std::string name;
     Color color;
     f >> name >> color;
-    names.push_back(name);
-    colors.push_back(color);
+    colors[name] = color;
     if (!f) break;
   }
 
@@ -42,10 +40,6 @@ int main() {
     std::cout << "Enter a color name, or type quit: ";
     std::cin >> input;
     if (input == "quit") break;
-    for (int i = 0; i < names.size(); i++) {
-      if (names[i] == input) {
-        std::cout << colors[i] << std::endl;
-      }
-    }
+    std::cout << colors[input] << std::endl;
   }
 }
