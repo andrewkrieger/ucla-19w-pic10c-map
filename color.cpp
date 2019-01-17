@@ -21,7 +21,7 @@ std::istream& operator>>(std::istream& is,
 
 Color getColor(const std::map<std::string, Color>& colors,
                const std::string& color) {
-  return colors[color];
+  return colors.at(color);
 }
 
 int main() {
